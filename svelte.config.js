@@ -9,12 +9,14 @@ const config = {
 	vitePlugin: {
 		inspector: true
 	},
+
+	pages: 'build',
+	assets: 'build',
+	fallback: '404.html',
+	precompress: true,
+	strict: true,
+
 	kit: {
-		pages: 'build',
-		assets: 'build',
-		fallback: '404.html',
-		precompress: true,
-		strict: true,
 		adapter: adapter(),
 		alias: {
 			$routes: 'src/routes'
