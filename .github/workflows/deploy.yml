@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install Dependencies
+        run: |
+          node --version
+          npm --version
+          npm i
+
+      - name: Build Site
+        run: |
+          npm run build
+          touch build/.nojekyll
+          echo "mrvauxs.net" > CNAME
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          folder: build

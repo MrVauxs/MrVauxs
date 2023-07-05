@@ -1,4 +1,5 @@
-# Hi! I'm Vauxs. 
+# Hi! I'm Vauxs
+
 > Also commonly known with other prefixes such as _Mr_, _Sir_, or _That_ Vauxs.
 
 I create content for [Foundry VTT](foundryvtt.com). You can see my packages [here](https://foundryvtt.com/community/mrvauxs/packages), though that does not include commissions that I made such as ones for the [Botanical Bestiary](https://www.drivethrurpg.com/product/428111/The-Botanical-Bestiary-Foundry-Module), or [Loot Tavern](https://loottavern.com/shop/?ixwpst[product_cat][]=116&title=1&excerpt=1&content=1&categories=1&attributes=1&tags=1&sku=1&ixwpsf[taxonomy][product_cat][show]=all&ixwpsf[taxonomy][product_cat][multiple]=1&ixwpsf[taxonomy][product_cat][filter]=1)!
