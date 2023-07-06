@@ -45,7 +45,7 @@
 		{
 			title: 'PF2e Animations',
 			href: 'https://github.com/MrVauxs/pf2e-jb2a-macros',
-			src: 'https://github.com/MrVauxs/pf2e-jb2a-macros/blob/master/cover.png?raw=true',
+			src: 'https://github.com/MrVauxs/pf2e-jb2a-macros/blob/master/preview.gif?raw=true',
 			srcCover: true,
 			default: false
 		},
@@ -74,6 +74,13 @@
 			title: 'Loot Tavern Themed Item Packs',
 			href: 'https://loottavern.com/shop/?ixwpst[product_cat][]=47&ixwpst[product_cat][]=116&title=1&excerpt=1&content=1&categories=1&attributes=1&tags=1&sku=1&ixwpsf[taxonomy][product_cat][show]=all&ixwpsf[taxonomy][product_cat][multiple]=1&ixwpsf[taxonomy][product_cat][filter]=1',
 			src: 'https://foundryvtt.s3.us-west-2.amazonaws.com/website-media-dev/user_1/asset/loot-tavern-banner-2020-11-04.jpg',
+			srcCover: true,
+			default: false
+		},
+		{
+			title: 'Asian Monsters (5e)',
+			href: 'https://foundryvtt.com/packages/asian-monsters-5e',
+			src: 'https://i.imgur.com/GIS22O5.png',
 			srcCover: true,
 			default: false
 		}
