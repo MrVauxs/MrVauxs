@@ -7,6 +7,7 @@
 		src: 'fvtt-cc-text-sm.png' | string;
 		srcCover: boolean;
 		default: boolean;
+		placement?: 'top' | 'centre';
 	};
 </script>
 
@@ -40,7 +41,8 @@
 			href: 'https://github.com/MrVauxs/foundry-summons',
 			src: 'https://github.com/MrVauxs/foundry-summons/raw/main/assets/setup.webp',
 			srcCover: true,
-			default: false
+			default: false,
+			placement: 'centre'
 		},
 		{
 			title: 'PF2e Animations',
