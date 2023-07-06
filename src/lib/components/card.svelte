@@ -3,8 +3,19 @@
 	export let option: option;
 </script>
 
-<svelte:element this={option.href ? 'a' : 'div'} class="card card-hover p-3" href={option.href}>
-	<header>{option.title}</header>
-	{#if option.content}<section class="p-4">(content)</section>{/if}
-	{#if option.footer}<footer class="card-footer">(footer)</footer>{/if}
+<svelte:element this={option.href ? 'a' : 'div'} class="card card-hover" href={option.href}>
+	<div>
+		<img
+			src={option.src ?? 'fvtt-cc-text-sm.png'}
+			alt={option.title}
+			class="w-96 h-48 overflow-hidden {option.src
+				? 'object-cover object-top'
+				: 'object-contain object-centre'}"
+		/>
+	</div>
+	<div class="p-1 bg-secondary-100-800-token">
+		<span>{option.title}</span>
+	</div>
+	{#if option.content}<section class="p-4">{option.content}</section>{/if}
+	{#if option.footer}<footer class="card-footer">{option.footer}</footer>{/if}
 </svelte:element>
