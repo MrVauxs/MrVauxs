@@ -6,14 +6,18 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { Discord, GitHub } from 'svelte-stacks-icons';
+	import { Discord, GitHub, Twitter } from 'svelte-stacks-icons';
 </script>
 
 <!-- App Shell -->
 <AppShell>
 	<svelte:fragment slot="header">
-		<AppBar slotTrail="place-content-end">
+		<AppBar slotTrail="place-content-end" padding="py-2">
 			<svelte:fragment slot="trail">
+				<a href="https://twitter.com/ThatVauxs" class="chip variant-outline hover:variant-filled">
+					<span class="badge-icon"><Twitter /></span>
+					<span>Twitter</span>
+				</a>
 				<a
 					href="https://discordapp.com/users/231079402690052097"
 					class="chip variant-outline hover:variant-filled"
