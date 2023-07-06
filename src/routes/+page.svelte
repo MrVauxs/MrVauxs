@@ -55,7 +55,7 @@
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-3 text-center flex flex-col items-center">
 		<div>
-			<header class="pb-1">
+			<header class="pb-1 pt-6">
 				<div>
 					<img
 						class="inline-flex pixels w-8 h-8 mx-3 scale-150 align-baseline"
@@ -74,7 +74,7 @@
 			<hr class="my-2" />
 			<span>Some of the stuff I made:</span>
 		</div>
-		<div class="gap-1.5 grid grid-cols-4">
+		<div class="gap-1.5 grid sm:grid-cols-2 md:grid-cols-4">
 			<!-- Why Number()? Because TypeScript complains about using booleans in arithmetic. -->
 			{#each array.sort((b, a) => Number(!!a.src) - Number(!!b.src)) as opt}
 				<Card option={opt} />

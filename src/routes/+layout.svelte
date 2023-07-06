@@ -16,25 +16,25 @@
 			<svelte:fragment slot="trail">
 				<a href="https://twitter.com/ThatVauxs" class="chip variant-outline hover:variant-filled">
 					<span class="badge-icon"><Twitter /></span>
-					<span>Twitter</span>
+					<span class="hidden sm:inline">Twitter</span>
 				</a>
 				<a
 					href="https://discordapp.com/users/231079402690052097"
 					class="chip variant-outline hover:variant-filled"
 				>
 					<span class="badge-icon"><Discord /></span>
-					<span>Discord</span>
+					<span class="hidden sm:inline">Discord</span>
 				</a>
 				<a href="https://github.com/MrVauxs" class="chip variant-outline hover:variant-filled">
 					<span class="badge-icon"><GitHub /></span>
-					<span>GitHub</span>
+					<span class="hidden sm:inline">GitHub</span>
 				</a>
 				<a
 					href="https://foundryvtt.com/community/mrvauxs"
 					class="chip variant-outline hover:variant-filled"
 				>
 					<span class="badge-icon"><img src="fvtt-d20.png" alt="FVTT Icon" /></span>
-					<span>FoundryVTT</span>
+					<span class="hidden sm:inline">FoundryVTT</span>
 				</a>
 			</svelte:fragment>
 		</AppBar>
