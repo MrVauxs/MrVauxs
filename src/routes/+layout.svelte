@@ -10,7 +10,7 @@
 </script>
 
 <!-- App Shell -->
-<AppShell>
+<AppShell regionPage="relative" slotPageFooter="sticky bottom-0 z-10">
 	<svelte:fragment slot="header">
 		<AppBar slotTrail="place-content-end" padding="py-2">
 			<svelte:fragment slot="trail">
@@ -40,7 +40,7 @@
 		</AppBar>
 	</svelte:fragment>
 	<slot />
-	<svelte:fragment slot="footer">
+	<svelte:fragment slot="pageFooter">
 		<a
 			href="https://github.com/MrVauxs/MrVauxs"
 			class="chip variant-outline hover:variant-filled m-1"

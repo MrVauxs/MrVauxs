@@ -6,9 +6,9 @@
 <svelte:element this={option.href ? 'a' : 'div'} class="card card-hover" href={option.href}>
 	<div>
 		<img
-			src={option.src ?? 'fvtt-cc-text-sm.png'}
+			src={option.src}
 			alt={option.title}
-			class="w-96 h-48 overflow-hidden {option.src
+			class="w-96 h-48 overflow-hidden {option.srcCover
 				? 'object-cover object-top'
 				: 'object-contain object-centre'}"
 		/>
