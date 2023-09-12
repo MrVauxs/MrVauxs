@@ -68,14 +68,15 @@
 		{
 			title: 'Botanical Bestiary',
 			href: 'https://www.drivethrurpg.com/product/428111/The-Botanical-Bestiary-Foundry-Module',
-			src: 'https://static.wixstatic.com/media/6e5ee1_65ecfb847d3a44519f21986abc21759d~mv2.jpg/v1/fill/w_468,h_597,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/bb%20cover%20leshy%20final%20v2%20SMALL.jpg',
+			src: 'bb cover leshy final v2 SMALL.webp',
 			srcCover: true,
+			placement: 'top',
 			default: false
 		},
 		{
 			title: 'Loot Tavern Themed Item Packs',
 			href: 'https://loottavern.com/shop/?ixwpst[product_cat][]=47&ixwpst[product_cat][]=116&title=1&excerpt=1&content=1&categories=1&attributes=1&tags=1&sku=1&ixwpsf[taxonomy][product_cat][show]=all&ixwpsf[taxonomy][product_cat][multiple]=1&ixwpsf[taxonomy][product_cat][filter]=1',
-			src: 'https://foundryvtt.s3.us-west-2.amazonaws.com/website-media-dev/user_1/asset/loot-tavern-banner-2020-11-04.jpg',
+			src: 'loot-tavern-banner-2020-11-04.jpg',
 			srcCover: true,
 			default: false
 		},
@@ -84,6 +85,12 @@
 			href: 'https://foundryvtt.com/packages/asian-monsters-5e',
 			src: 'https://i.imgur.com/GIS22O5.png',
 			srcCover: true,
+			default: false
+		},
+		{
+			title: 'Treasury of City and Winter',
+			src: 'fvtt-cc-text-sm.png',
+			srcCover: false,
 			default: false
 		}
 	];
@@ -105,8 +112,9 @@
 			</header>
 			<span>
 				<p />
-				A Polish Robot or Goblin, depending on the mood. Hobbyist Programmer and Content Creator. Loves
-				TTRPGs, art, and music.
+				Programmer. I make stuff for FoundryVTT and primarily for the Pathfinder 2e system.
+				<p />
+				Worked with Loot Tavern, Legendary Games, Inky Cap Press, and created a variety of popular modules for Pathfinder 2e system on Foundry VTT.
 			</span>
 			<hr class="my-2" />
 			<span>Some of the stuff I made:</span>

@@ -6,7 +6,7 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { Discord, GitHub, Twitter } from 'svelte-stacks-icons';
+	import { Discord, GitHub, Twitter, Currency } from 'svelte-stacks-icons';
 </script>
 
 <!-- App Shell -->
@@ -35,6 +35,10 @@
 				>
 					<span class="badge-icon"><img src="fvtt-d20.png" alt="FVTT Icon" /></span>
 					<span class="hidden sm:inline">FoundryVTT</span>
+				</a>
+				<a href="https://ko-fi.com/MrVauxs" class="chip variant-outline hover:variant-filled bg-primary-600">
+					<span class="badge-icon scale-125"><img src="61e1116779fc0a9bd5bdbcc7_Frame 6.png" alt="Ko-Fi Icon" /></span>
+					<span class="hidden sm:inline">Ko-Fi</span>
 				</a>
 			</svelte:fragment>
 		</AppBar>

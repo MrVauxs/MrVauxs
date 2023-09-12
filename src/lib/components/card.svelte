@@ -8,8 +8,9 @@
 		<img
 			src={option.src}
 			alt={option.title}
-			class="w-96 h-48 overflow-hidden {option.srcCover ? 'object-cover' : 'object-contain'}
-				object-{option.placement ?? (option.srcCover ? 'top' : 'centre')}"
+			class="w-96 h-48 overflow-hidden {option.srcCover ? 'object-cover' : 'object-contain'}"
+			class:object-top={option.placement === 'top' ?? option.srcCover}
+			class:object-center={option.placement === 'centre'}
 		/>
 	</div>
 	<div class="p-1 bg-secondary-100-800-token">
