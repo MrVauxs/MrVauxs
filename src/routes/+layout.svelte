@@ -2,6 +2,7 @@
   import "../app.postcss";
   import { AppShell, AppBar } from "@skeletonlabs/skeleton";
 
+  /*
   // Highlight JS
   import hljs from "highlight.js/lib/core";
   import "highlight.js/styles/github-dark.css";
@@ -10,6 +11,7 @@
 
   hljs.registerLanguage("json", json);
   storeHighlightJs.set(hljs);
+
 
   // Floating UI for Popups
   import {
@@ -22,6 +24,9 @@
   } from "@floating-ui/dom";
   import { storePopup } from "@skeletonlabs/skeleton";
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
+  */
+
+  export const prerender = true;
 </script>
 
 <!-- App Shell -->
