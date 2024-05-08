@@ -1,5 +1,9 @@
 <script lang="ts">
   import Icon from "@iconify/svelte";
+  import robot from "$lib/assets/robot.gif";
+  import botanics from "$lib/assets/botanics.webp";
+  import lootTavern from "$lib/assets/loot-tavern.png";
+  import legGames from "$lib/assets/leg-games.png";
 </script>
 
 <svelte:head>
@@ -14,7 +18,7 @@
       Hello!
 
       <img
-        src="robot.gif"
+        src={robot}
         alt="Animated Robot Face"
         class="h-8 scale-150 shadow-md mx-4"
         style="image-rendering: pixelated;"
@@ -27,10 +31,9 @@
       I create content for FoundryVTT, specifically for Pathfinder 2e and D&D5e systems.
       On the right you can see with who or on what I've worked on.
       <p />
-      You can contact me through email at<span class="code"
-        >mrvauxs@gmail.com</span
-      >, through Discord at <span class="code">@vauxs</span>, or social media
-      linked below.
+      You can contact me through email at
+      <span class="code"> mrvauxs@gmail.com</span>, through Discord at
+      <span class="code">@vauxs</span>, or social media linked below.
       <p class="text-sm">
         If you like my work, consider supporting me on Ko-fi!
       </p>
@@ -86,7 +89,8 @@
   >
     <a href="https://foundryvtt.com/community/mrvauxs/packages">
       <div
-        class="h-48 bg-[url('https://repository-images.githubusercontent.com/501376342/429c4d03-3c60-4e9c-903d-ea3001da9e05')] bg-center bg-[#353535] bg-contain bg-no-repeat text-clip items-end flex"
+        class="h-48 bg-center bg-[#353535] bg-contain bg-no-repeat text-clip items-end flex"
+        style="background-image: url(https://repository-images.githubusercontent.com/501376342/429c4d03-3c60-4e9c-903d-ea3001da9e05);"
       >
         <div class="w-full pb-1 bg-gray-700/80">
           <h2 class="text-2xl font-bold">Open Modules</h2>
@@ -99,7 +103,8 @@
     </a>
     <a href="https://loottavern.com/">
       <div
-        class="h-48 bg-[url('loot-tavern.png')] bg-center bg-cover bg-no-repeat text-clip items-end flex"
+        class="h-48 bg-center bg-cover bg-no-repeat text-clip items-end flex"
+        style="background-image: url('{lootTavern}');"
       >
         <div class="w-full pb-1 bg-gray-700/80">
           <h2 class="text-2xl font-bold">Loot Tavern</h2>
@@ -113,7 +118,8 @@
       href="https://www.drivethrurpg.com/en/product/428111/The-Botanical-Bestiary-Foundry-Module"
     >
       <div
-        class="h-48 bg-[url('botanics.webp')] bg-top bg-cover bg-no-repeat text-clip items-end flex"
+        class="h-48 bg-top bg-cover bg-no-repeat text-clip items-end flex"
+        style="background-image: url('{botanics}');"
       >
         <div class="w-full pb-1 bg-gray-700/80">
           <h2 class="text-2xl font-bold">Botanical Bestiary</h2>
@@ -124,7 +130,8 @@
       </div>
     </a>
     <div
-      class="h-48 bg-[url('leg-games.png')] bg-white bg-center bg-contain bg-no-repeat text-clip items-end flex cursor-not-allowed"
+      class="h-48 bg-white bg-center bg-contain bg-no-repeat text-clip items-end flex cursor-not-allowed"
+      style="background-image: url('{legGames}');"
     >
       <div class="w-full pb-1 bg-gray-700/80">
         <h2 class="text-2xl font-bold">Legendary Games</h2>
