@@ -4,6 +4,7 @@
   import botanics from "$lib/assets/botanics.webp";
   import lootTavern from "$lib/assets/loot-tavern.png";
   import legGames from "$lib/assets/leg-games.png";
+  import yeehaw from "$lib/assets/yeehaw.png";
 </script>
 
 <svelte:head>
@@ -16,7 +17,6 @@
   <div class="text-center space-y-4 card p-6">
     <h1 class="text-4xl font-bold flex justify-center items-center text-center">
       Hello!
-
       <img
         src={robot}
         alt="Animated Robot Face"
@@ -28,14 +28,19 @@
     <div class="space-y-2">
       <p class="text-lg">I'm Vauxs, thank you for checking out my page!</p>
       <p />
-      I create content for FoundryVTT, specifically for Pathfinder 2e and D&D5e systems.
-      On the right you can see with who or on what I've worked on.
+      I'm a
+      <u
+        title="Proficient in Svelte&Kit, Tailwind, TypeScript, and how to setup GitHub Actions, Cloudflare Pages, own VPS, etc."
+        >web developer</u
+      >, data-entry clerk, and an editor for TTRPG content. I primarily convert
+      and edit content for Foundry VTT in Pathfinder 2e and Dungeons & Dragons
+      5e systems.
       <p />
       You can contact me through email at
       <span class="code"> mrvauxs@gmail.com</span>, through Discord at
       <span class="code">@vauxs</span>, or social media linked below.
-      <p class="text-sm">
-        If you like my work, consider supporting me on Ko-fi!
+      <p class="text-xs">
+        If you like my open-source work, consider supporting me on Ko-fi!
       </p>
     </div>
     <hr />
@@ -67,14 +72,6 @@
         <Icon icon="mdi:github" class="mr-2 scale-150" /> GitHub
       </a>
       <a
-        class="btn btn-sm variant-ghost-surface"
-        href="https://foundryvtt.com/community/mrvauxs"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <Icon icon="mdi:anvil" class="mr-2 scale-150" /> Foundry
-      </a>
-      <a
         class="btn btn-sm variant-glass-primary"
         href="https://ko-fi.com/mrvauxs"
         target="_blank"
@@ -93,11 +90,8 @@
         style="background-image: url(https://repository-images.githubusercontent.com/501376342/429c4d03-3c60-4e9c-903d-ea3001da9e05);"
       >
         <div class="w-full pb-1 bg-gray-700/80">
-          <h2 class="text-2xl font-bold">Open Modules</h2>
-          <p class="px-2 text-sm hidden md:block">
-            Open-source, free modules such as Vauxs' Archives, PF2e Animations,
-            Foundry Summons, etc.
-          </p>
+          <h2 class="text-lg md:text-2xl font-bold">Open Modules</h2>
+          <p class="px-2 text-sm hidden md:block">Open-source, free modules.</p>
         </div>
       </div>
     </a>
@@ -107,24 +101,22 @@
         style="background-image: url('{lootTavern}');"
       >
         <div class="w-full pb-1 bg-gray-700/80">
-          <h2 class="text-2xl font-bold">Loot Tavern</h2>
+          <h2 class="text-lg md:text-2xl font-bold">Loot Tavern</h2>
           <p class="px-2 text-sm hidden md:block">
             Item Packs, Adventures, and more!
           </p>
         </div>
       </div>
     </a>
-    <a
-      href="https://www.drivethrurpg.com/en/product/428111/The-Botanical-Bestiary-Foundry-Module"
-    >
+    <a href="https://www.drivethrurpg.com/en/product/428111">
       <div
         class="h-48 bg-top bg-cover bg-no-repeat text-clip items-end flex"
         style="background-image: url('{botanics}');"
       >
         <div class="w-full pb-1 bg-gray-700/80">
-          <h2 class="text-2xl font-bold">Botanical Bestiary</h2>
+          <h2 class="text-lg md:text-2xl font-bold">Botanical Bestiary</h2>
           <p class="px-2 text-sm hidden md:block">
-            An entire bestiary of cute leshies, with custom-made tokens.
+            An entire bestiary of cute leshies.
           </p>
         </div>
       </div>
@@ -134,9 +126,24 @@
       style="background-image: url('{legGames}');"
     >
       <div class="w-full pb-1 bg-gray-700/80">
-        <h2 class="text-2xl font-bold">Legendary Games</h2>
-        <p class="px-2 text-sm hidden md:block">Bestiaries, Booklets</p>
+        <h2 class="text-lg md:text-2xl font-bold">Legendary Games</h2>
+        <p class="px-2 text-sm hidden md:block">
+          Mediterranean Monsters 5e, Asian Monsters 5e
+        </p>
       </div>
     </div>
+    <a href="https://www.drivethrurpg.com/en/product/482415">
+      <div
+        class="h-48 bg-center bg-cover bg-no-repeat text-clip items-end flex"
+        style="background-image: url('{yeehaw}');"
+      >
+        <div class="w-full pb-1 bg-gray-700/80">
+          <h2 class="text-lg md:text-2xl font-bold inline-block">Safe Haven</h2>
+          <p class="px-2 text-sm hidden md:block">
+            An adventure module for Pathfinder 2nd Edition.
+          </p>
+        </div>
+      </div>
+    </a>
   </div>
 </div>
