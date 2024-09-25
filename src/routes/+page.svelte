@@ -5,6 +5,7 @@
   import lootTavern from "$lib/assets/loot-tavern.png";
   import legGames from "$lib/assets/leg-games.png";
   import yeehaw from "$lib/assets/yeehaw.png";
+  import summon from "$lib/assets/summon.webp";
 </script>
 
 <svelte:head>
@@ -140,7 +141,20 @@
         <div class="w-full pb-1 bg-gray-700/80">
           <h2 class="text-lg md:text-2xl font-bold inline-block">Safe Haven</h2>
           <p class="px-2 text-sm hidden md:block">
-            An adventure module for Pathfinder 2nd Edition.
+            An adventure module for Pathfinder 2e.
+          </p>
+        </div>
+      </div>
+    </a>
+    <a href="https://www.drivethrurpg.com/en/product/480866/summoners">
+      <div
+        class="h-48 bg-center bg-cover bg-no-repeat text-clip items-end flex"
+        style="background-image: url('{summon}');"
+      >
+        <div class="w-full pb-1 bg-gray-700/80">
+          <h2 class="text-lg md:text-2xl font-bold inline-block">Summoners+</h2>
+          <p class="px-2 text-sm hidden md:block">
+            An expansion for the Summoner class in Pathfinder 2e.
           </p>
         </div>
       </div>
