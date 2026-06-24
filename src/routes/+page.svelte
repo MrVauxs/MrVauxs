@@ -122,6 +122,7 @@
         </div>
       </div>
     </a>
+    <!--
     <div
       class="h-48 bg-white bg-center bg-contain bg-no-repeat text-clip items-end flex cursor-not-allowed"
       style="background-image: url('{legGames}');"
@@ -146,6 +147,7 @@
         </div>
       </div>
     </a>
+    -->
     <a href="https://www.drivethrurpg.com/en/product/480866/summoners">
       <div
         class="h-48 bg-center bg-cover bg-no-repeat text-clip items-end flex"
