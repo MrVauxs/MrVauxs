@@ -16,7 +16,7 @@
 	<article class="card">
 		<header class="card-head">
 			<h1>
-				Hi, I'm Vauxs.
+				Hi, I'm Vauxs!
 				<img class="robot" src={robot} alt="Animated pixel-art robot face looking around" />
 			</h1>
 			<p class="tagline">Thank you for checking out my page!</p>
