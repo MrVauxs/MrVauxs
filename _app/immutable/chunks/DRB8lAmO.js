@@ -1,0 +1,1 @@
+var e=``+new URL(`../assets/robot.BemTdbe3.gif`,import.meta.url).href;export{e as t};
