@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* ---- Fonts ----
+   Serif (Newsreader) for headings & prose — the reading voice.
+   Geometric sans (Geist) for UI chrome — buttons, labels, code.
+   Mirrors the wiki's serif-text / sans-UI split. */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,380..600;1,6..72,400..560&family=Geist:wght@400..600&display=swap');
+
+/* ============================================================
+   Color tokens — lifted from the wiki (wiki.mrvauxs.net)
+   ============================================================ */
+
+/* Dark mode (default) — warmed slate with a cool-blue accent */
+:root {
+	--vx-accent-low: #11283a;
+	--vx-accent: #2b8cc4;
+	--vx-accent-high: #b6dcf5;
+
+	--vx-white: #f4f1ea;
+	--vx-gray-1: #e7e3da;
+	--vx-gray-2: #bfc4cc;
+	--vx-gray-3: #8b929c;
+	--vx-gray-4: #545b66;
+	--vx-gray-5: #2c333d;
+
+	--vx-bg: #12161c;
+	--vx-bg-soft: #161b22;
+	--vx-card: #1a2029;
+	--vx-card-hover: #1f2630;
+	--vx-border: #2a323d;
+
+	--vx-serif: 'Newsreader', ui-serif, Georgia, serif;
+	--vx-sans: 'Geist', system-ui, sans-serif;
+
+	--vx-text: var(--vx-gray-1);
+	color-scheme: dark;
+}
+
+/* Light mode — warm paper */
+:root[data-theme='light'] {
+	--vx-accent-low: #cbe6fa;
+	--vx-accent: #1d6fa5;
+	--vx-accent-high: #0c3a5a;
+
+	--vx-white: #1b2129;
+	--vx-gray-1: #2c333d;
+	--vx-gray-2: #444c57;
+	--vx-gray-3: #66707c;
+	--vx-gray-4: #99a1ac;
+	--vx-gray-5: #d3cdc1;
+
+	--vx-bg: #f5f1e8;
+	--vx-bg-soft: #efe9dc;
+	--vx-card: #fffdf8;
+	--vx-card-hover: #fffefb;
+	--vx-border: #ddd5c5;
+
+	--vx-text: var(--vx-gray-1);
+	color-scheme: light;
+}
+
+/* ============================================================
+   Page background — grain texture + radial accent glows
+   ============================================================ */
+html {
+	min-height: 100%;
+}
+body {
+	min-height: 100vh;
+	background-color: var(--vx-bg);
+	color: var(--vx-text);
+	font-family: var(--vx-serif);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Fractal-noise grain overlay */
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	opacity: 0.5;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-theme='light'] body::before {
+	opacity: 0.35;
+	mix-blend-mode: multiply;
+}
+
+/* Radial accent glows */
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -2;
+	pointer-events: none;
+	background:
+		radial-gradient(
+			50% 50% at 67% 110%,
+			color-mix(in srgb, var(--vx-accent) 16%, transparent),
+			transparent 80%
+		),
+		radial-gradient(
+			80% 80% at 25% 25%,
+			color-mix(in srgb, var(--vx-accent-low) 45%, transparent),
+			transparent 70%
+		);
+}
