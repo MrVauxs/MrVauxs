@@ -1,72 +1,24 @@
 <script lang="ts">
-	let theme = $state<'light' | 'dark'>('dark');
-
-	$effect(() => {
-		theme = (document.documentElement.dataset.theme as 'light' | 'dark') ?? 'dark';
-	});
-
-	function toggleTheme() {
-		theme = theme === 'dark' ? 'light' : 'dark';
-		document.documentElement.dataset.theme = theme;
-		try {
-			localStorage.setItem('theme', theme);
-		} catch {
-			/* ignore */
-		}
-	}
+	import ThemeToggle from '$lib/ThemeToggle.svelte';
+	import robot from '$lib/assets/robot.gif';
 
 	const links = [
-		{
-			label: 'Twitter',
-			href: 'https://twitter.com/ThatVauxs',
-			icon: 'twitter'
-		},
-		{
-			label: 'Bluesky',
-			href: 'https://bsky.app/profile/mrvauxs.net',
-			icon: 'bluesky'
-		},
-		{
-			label: 'GitHub',
-			href: 'https://github.com/mrvauxs',
-			icon: 'github'
-		},
-		{
-			label: 'Wiki',
-			href: 'https://wiki.mrvauxs.net',
-			icon: 'wiki'
-		}
+		{ label: 'Twitter', href: 'https://twitter.com/ThatVauxs', icon: 'twitter' },
+		{ label: 'Bluesky', href: 'https://bsky.app/profile/mrvauxs.net', icon: 'bluesky' },
+		{ label: 'GitHub', href: 'https://github.com/mrvauxs', icon: 'github' },
+		{ label: 'Wiki', href: 'https://wiki.mrvauxs.net', icon: 'wiki' }
 	] as const;
 </script>
 
 <main class="page">
-	<button
-		class="theme-toggle"
-		onclick={toggleTheme}
-		aria-label="Toggle color theme"
-		title="Toggle color theme"
-	>
-		{#if theme === 'dark'}
-			<!-- sun -->
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-				<circle cx="12" cy="12" r="4" />
-				<path
-					d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-					stroke-linecap="round"
-				/>
-			</svg>
-		{:else}
-			<!-- moon -->
-			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-				<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linejoin="round" />
-			</svg>
-		{/if}
-	</button>
+	<ThemeToggle />
 
 	<article class="card">
 		<header class="card-head">
-			<span class="eyebrow">mrvauxs.net</span>
-			<h1>Hello, I'm Vauxs.</h1>
+			<h1>
+				Hi, I'm Vauxs.
+				<img class="robot" src={robot} alt="Animated pixel-art robot face looking around" />
+			</h1>
 			<p class="tagline">Thank you for checking out my page!</p>
 		</header>
 
@@ -74,14 +26,14 @@
 
 		<div class="prose">
 			<p>
-				I'm a <span class="tip" title="Svelte & Kit, Tailwind, TypeScript, GitHub Actions, Cloudflare Pages, own VPS, etc.">web developer</span>, data-entry clerk, and an editor for TTRPG content. I
-				primarily convert and edit content for Foundry VTT in Pathfinder 2e and
-				Dungeons &amp; Dragons 5e systems.
+				I'm a <span
+					class="tip"
+					title="Svelte & Kit, Tailwind, TypeScript, GitHub Actions, Cloudflare Pages, own VPS, ..."
+					>web developer</span
+				>, data-entry clerk, and impromptu proofreader for TTRPG content. I primarily deal in Pathfinder 2e content.
 			</p>
 			<p>
-				You can reach me by email at <span class="code">mrvauxs@gmail.com</span>,
-				on Discord at <span class="code">@vauxs</span>, or through the social links
-				below.
+				You can reach me on Discord at <span class="code">@vauxs</span>, or through the social links below.
 			</p>
 		</div>
 
@@ -133,210 +85,34 @@
 			</a>
 			<a class="donate" href="https://patreon.com/mrvauxs" target="_blank" rel="noreferrer">
 				<svg viewBox="0 0 24 24" fill="currentColor">
-					<path
-						d="M3 3h3.7v18H3V3Zm11.3 0A6.7 6.7 0 1 1 14.3 16.4 6.7 6.7 0 0 1 14.3 3Z"
-					/>
+					<path d="M3 3h3.7v18H3V3Zm11.3 0A6.7 6.7 0 1 1 14.3 16.4 6.7 6.7 0 0 1 14.3 3Z" />
 				</svg>
 				<span>Patreon</span>
 			</a>
 		</div>
+
+		<a class="nav-link" href="/work" data-sveltekit-preload-data="hover">
+			<span>See who I've worked with</span>
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+				<path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</a>
 	</article>
 </main>
 
 <style>
-	.page {
-		min-height: 100vh;
+	.card-head h1 {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 1.5rem;
-	}
-
-	/* ---- Theme toggle ---- */
-	.theme-toggle {
-		position: fixed;
-		top: 1rem;
-		right: 1rem;
-		width: 2.4rem;
-		height: 2.4rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid var(--vx-border);
-		border-radius: 0.6rem;
-		background: color-mix(in srgb, var(--vx-card) 70%, transparent);
-		color: var(--vx-gray-2);
-		cursor: pointer;
-		backdrop-filter: blur(6px);
-		transition:
-			border-color 0.15s ease,
-			color 0.15s ease;
-	}
-	.theme-toggle:hover {
-		border-color: var(--vx-accent);
-		color: var(--vx-white);
-	}
-	.theme-toggle svg {
-		width: 1.2rem;
-		height: 1.2rem;
-	}
-
-	/* ---- The poster card ---- */
-	.card {
-		width: 100%;
-		max-width: 34rem;
-		padding: 2.5rem;
-		background: linear-gradient(180deg, var(--vx-card), var(--vx-bg-soft));
-		border: 1px solid var(--vx-border);
-		border-radius: 1.1rem;
-		box-shadow:
-			0 1px 0 color-mix(in srgb, var(--vx-white) 6%, transparent) inset,
-			0 18px 50px rgba(0, 0, 0, 0.28);
-	}
-	@media (max-width: 30rem) {
-		.card {
-			padding: 1.75rem;
-		}
-	}
-
-	.card-head {
-		text-align: center;
-	}
-	.eyebrow {
-		font-family: var(--vx-sans);
-		font-size: 0.75rem;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		color: var(--vx-accent);
-	}
-	h1 {
-		margin: 0.5rem 0 0;
-		font-family: var(--vx-serif);
-		font-weight: 500;
-		font-size: clamp(2rem, 6vw, 2.7rem);
-		line-height: 1.1;
-		letter-spacing: -0.01em;
-		background: linear-gradient(
-			180deg,
-			var(--vx-white),
-			color-mix(in srgb, var(--vx-white) 68%, var(--vx-accent))
-		);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-	}
-	.tagline {
-		margin: 0.5rem 0 0;
-		color: var(--vx-gray-3);
-		font-size: 1.05rem;
-	}
-
-	hr {
-		border: none;
-		border-top: 1px solid var(--vx-border);
-		margin: 1.5rem 0;
-	}
-
-	.prose p {
-		margin: 0 0 0.85rem;
-		line-height: 1.6;
-		color: var(--vx-gray-2);
-		font-size: 1.05rem;
-	}
-	.prose p:last-child {
-		margin-bottom: 0;
-	}
-	.tip {
-		text-decoration: underline;
-		text-decoration-style: dotted;
-		text-underline-offset: 0.2em;
-		cursor: help;
-	}
-	.code {
-		font-family: var(--vx-sans);
-		font-size: 0.9em;
-		padding: 0.1rem 0.4rem;
-		border-radius: 0.4rem;
-		background: color-mix(in srgb, var(--vx-accent) 14%, transparent);
-		color: var(--vx-accent-high);
-		white-space: nowrap;
-	}
-
-	/* ---- Social links ---- */
-	.links {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
 		gap: 0.6rem;
-		margin-top: 1.75rem;
 	}
-	@media (max-width: 26rem) {
-		.links {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-	.link {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.4rem;
-		padding: 0.85rem 0.5rem;
-		font-family: var(--vx-sans);
-		font-size: 0.85rem;
-		color: var(--vx-gray-2);
-		text-decoration: none;
-		border: 1px solid var(--vx-border);
-		border-radius: 0.7rem;
-		background: color-mix(in srgb, var(--vx-card) 50%, transparent);
-		transition:
-			transform 0.15s ease,
-			border-color 0.15s ease,
-			color 0.15s ease;
-	}
-	.link:hover {
-		transform: translateY(-2px);
-		border-color: var(--vx-accent);
-		color: var(--vx-white);
-	}
-	.link-icon svg {
-		width: 1.4rem;
-		height: 1.4rem;
-	}
-
-	/* ---- Support ---- */
-	.support {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.6rem;
-		margin-top: 0.6rem;
-	}
-	.donate {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.55rem;
-		padding: 0.8rem;
-		font-family: var(--vx-sans);
-		font-weight: 600;
-		font-size: 0.9rem;
-		color: #fff;
-		text-decoration: none;
-		border-radius: 0.7rem;
-		background: linear-gradient(
-			180deg,
-			var(--vx-accent),
-			color-mix(in srgb, var(--vx-accent) 78%, #000)
-		);
-		box-shadow: 0 6px 20px color-mix(in srgb, var(--vx-accent) 35%, transparent);
-		transition:
-			transform 0.15s ease,
-			box-shadow 0.15s ease;
-	}
-	.donate:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 10px 28px color-mix(in srgb, var(--vx-accent) 45%, transparent);
-	}
-	.donate svg {
-		width: 1.15rem;
-		height: 1.15rem;
+	.robot {
+		height: 1.1em;
+		width: auto;
+		flex-shrink: 0;
+		image-rendering: pixelated;
+		filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+		margin-top: -0.2em;
 	}
 </style>

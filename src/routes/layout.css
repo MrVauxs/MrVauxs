@@ -1,11 +1,9 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* ---- Fonts ----
-   Serif (Newsreader) for headings & prose — the reading voice.
-   Geometric sans (Geist) for UI chrome — buttons, labels, code.
-   Mirrors the wiki's serif-text / sans-UI split. */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,380..600;1,6..72,400..560&family=Geist:wght@400..600&display=swap');
+/* Fonts (Newsreader serif for prose, Geist sans for UI chrome) are loaded via
+   <link> in app.html so the @import ordering rule can't be violated and the
+   browser can start fetching them earlier. */
 
 /* ============================================================
    Color tokens — lifted from the wiki (wiki.mrvauxs.net)
@@ -108,4 +106,382 @@ body::after {
 			color-mix(in srgb, var(--vx-accent-low) 45%, transparent),
 			transparent 70%
 		);
+}
+
+/* ============================================================
+   Shared page + card system (used by / and /work)
+   ============================================================ */
+.page {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+}
+
+/* ---- Theme toggle ---- */
+.theme-toggle {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	width: 2.4rem;
+	height: 2.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--vx-border);
+	border-radius: 0.6rem;
+	background: color-mix(in srgb, var(--vx-card) 70%, transparent);
+	color: var(--vx-gray-2);
+	cursor: pointer;
+	backdrop-filter: blur(6px);
+	transition:
+		border-color 0.15s ease,
+		color 0.15s ease;
+	/* Hold the toggle still while the cards slide underneath it. */
+	view-transition-name: theme-toggle;
+}
+.theme-toggle:hover {
+	border-color: var(--vx-accent);
+	color: var(--vx-white);
+}
+.theme-toggle svg {
+	width: 1.2rem;
+	height: 1.2rem;
+}
+
+/* ---- The poster card ---- */
+.card {
+	width: 100%;
+	max-width: 34rem;
+	padding: 2.5rem;
+	background: linear-gradient(180deg, var(--vx-card), var(--vx-bg-soft));
+	border: 1px solid var(--vx-border);
+	border-radius: 1.1rem;
+	box-shadow:
+		0 1px 0 color-mix(in srgb, var(--vx-white) 6%, transparent) inset,
+		0 18px 50px rgba(0, 0, 0, 0.28);
+	/* Named so the two pages' cards cross-animate on navigation. */
+	view-transition-name: card;
+}
+@media (max-width: 30rem) {
+	.card {
+		padding: 1.75rem;
+	}
+}
+
+.card-head {
+	text-align: center;
+}
+.eyebrow {
+	font-family: var(--vx-sans);
+	font-size: 0.75rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--vx-accent);
+}
+.card h1 {
+	margin: 0.5rem 0 0;
+	font-family: var(--vx-serif);
+	font-weight: 500;
+	font-size: clamp(2rem, 6vw, 2.7rem);
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+	background: linear-gradient(
+		180deg,
+		var(--vx-white),
+		color-mix(in srgb, var(--vx-white) 68%, var(--vx-accent))
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.tagline {
+	margin: 0.5rem 0 0;
+	color: var(--vx-gray-3);
+	font-size: 1.05rem;
+}
+
+.card hr {
+	border: none;
+	border-top: 1px solid var(--vx-border);
+	margin: 1.5rem 0;
+}
+
+.prose p {
+	margin: 0 0 0.85rem;
+	line-height: 1.6;
+	color: var(--vx-gray-2);
+	font-size: 1.05rem;
+}
+.prose p:last-child {
+	margin-bottom: 0;
+}
+.tip {
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	text-underline-offset: 0.2em;
+	cursor: help;
+}
+.code {
+	font-family: var(--vx-sans);
+	font-size: 0.9em;
+	padding: 0.1rem 0.4rem;
+	border-radius: 0.4rem;
+	background: color-mix(in srgb, var(--vx-accent) 14%, transparent);
+	color: var(--vx-accent-high);
+	white-space: nowrap;
+}
+
+/* ---- Social links ---- */
+.links {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.6rem;
+	margin-top: 1.75rem;
+}
+@media (max-width: 26rem) {
+	.links {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+.link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 0.85rem 0.5rem;
+	font-family: var(--vx-sans);
+	font-size: 0.85rem;
+	color: var(--vx-gray-2);
+	text-decoration: none;
+	border: 1px solid var(--vx-border);
+	border-radius: 0.7rem;
+	background: color-mix(in srgb, var(--vx-card) 50%, transparent);
+	transition:
+		transform 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease;
+}
+.link:hover {
+	transform: translateY(-2px);
+	border-color: var(--vx-accent);
+	color: var(--vx-white);
+}
+.link-icon svg {
+	width: 1.4rem;
+	height: 1.4rem;
+}
+
+/* ---- Support ---- */
+.support {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0.6rem;
+	margin-top: 0.6rem;
+}
+.donate {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	padding: 0.8rem;
+	font-family: var(--vx-sans);
+	font-weight: 600;
+	font-size: 0.9rem;
+	color: #fff;
+	text-decoration: none;
+	border-radius: 0.7rem;
+	background: linear-gradient(
+		180deg,
+		var(--vx-accent),
+		color-mix(in srgb, var(--vx-accent) 78%, #000)
+	);
+	transition:
+		transform 0.15s ease,
+		filter 0.15s ease;
+}
+.donate:hover {
+	transform: translateY(-2px);
+	filter: brightness(1.08);
+}
+.donate svg {
+	width: 1.15rem;
+	height: 1.15rem;
+}
+
+/* ---- Nav link (between pages) ---- */
+.nav-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	width: 100%;
+	margin-top: 1.5rem;
+	padding: 0.7rem;
+	font-family: var(--vx-sans);
+	font-weight: 500;
+	font-size: 0.9rem;
+	color: var(--vx-gray-2);
+	text-decoration: none;
+	background: transparent;
+	border: 1px solid var(--vx-border);
+	border-radius: 0.7rem;
+	cursor: pointer;
+	transition:
+		border-color 0.15s ease,
+		color 0.15s ease,
+		gap 0.15s ease;
+}
+.nav-link:hover {
+	border-color: var(--vx-accent);
+	color: var(--vx-white);
+	gap: 0.7rem;
+}
+.nav-link svg {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+/* ---- Work rows — wide and short ---- */
+.rows {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+.row {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	grid-template-areas:
+		'main arrow'
+		'blurb arrow';
+	align-items: center;
+	gap: 0.15rem 0.75rem;
+	padding: 0.9rem 1.1rem;
+	text-decoration: none;
+	border: 1px solid var(--vx-border);
+	border-radius: 0.8rem;
+	background: color-mix(in srgb, var(--vx-card) 50%, transparent);
+	transition:
+		transform 0.15s ease,
+		border-color 0.15s ease;
+}
+.row:hover {
+	transform: translateY(-2px);
+	border-color: var(--vx-accent);
+}
+.row-main {
+	grid-area: main;
+	display: flex;
+	align-items: baseline;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+}
+.row h2 {
+	margin: 0;
+	font-family: var(--vx-serif);
+	font-weight: 500;
+	font-size: 1.2rem;
+	color: var(--vx-white);
+}
+.row-role {
+	font-family: var(--vx-sans);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--vx-accent);
+}
+.row-blurb {
+	grid-area: blurb;
+	margin: 0;
+	font-size: 0.95rem;
+	line-height: 1.45;
+	color: var(--vx-gray-3);
+}
+.row-arrow {
+	grid-area: arrow;
+	width: 1.2rem;
+	height: 1.2rem;
+	color: var(--vx-gray-4);
+	transition:
+		color 0.15s ease,
+		transform 0.15s ease;
+}
+.row:hover .row-arrow {
+	color: var(--vx-accent);
+	transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   Cross-document view transition — the two pages' cards slide
+   past each other. Direction is set via data-nav on <html> by the
+   onNavigate hook in +layout.svelte. Forward = going to /work.
+   ============================================================ */
+::view-transition-group(card) {
+	animation-duration: 0.42s;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* The fixed theme toggle should hold still, not fade, while cards slide. */
+::view-transition-group(theme-toggle) {
+	animation-duration: 0.42s;
+}
+::view-transition-old(theme-toggle),
+::view-transition-new(theme-toggle) {
+	animation: none;
+	mix-blend-mode: normal;
+}
+::view-transition-new(theme-toggle) {
+	opacity: 1;
+}
+
+/* Forward (→ /work): new card slides in from the right, in front;
+   old card slides out to the left, behind. */
+:root[data-nav='forward']::view-transition-new(card) {
+	animation-name: vx-slide-in-right;
+	z-index: 2;
+}
+:root[data-nav='forward']::view-transition-old(card) {
+	animation-name: vx-slide-out-left;
+	z-index: 1;
+}
+/* Back (→ /): new card slides in from the left, in front. */
+:root[data-nav='back']::view-transition-new(card) {
+	animation-name: vx-slide-in-left;
+	z-index: 2;
+}
+:root[data-nav='back']::view-transition-old(card) {
+	animation-name: vx-slide-out-right;
+	z-index: 1;
+}
+
+@keyframes vx-slide-in-right {
+	from {
+		transform: translateX(30%);
+		opacity: 0;
+	}
+}
+@keyframes vx-slide-out-left {
+	to {
+		transform: translateX(-14%);
+		opacity: 0;
+	}
+}
+@keyframes vx-slide-in-left {
+	from {
+		transform: translateX(-30%);
+		opacity: 0;
+	}
+}
+@keyframes vx-slide-out-right {
+	to {
+		transform: translateX(14%);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(card),
+	::view-transition-group(theme-toggle) {
+		animation-duration: 0.01s;
+	}
 }
