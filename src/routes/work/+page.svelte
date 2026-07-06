@@ -38,9 +38,10 @@
 		max-width: 44rem;
 	}
 
-	/* Named grid areas have no clean Tailwind equivalent, so keep them here. */
+	/* Named grid areas have no clean Tailwind equivalent, so keep them here.
+	   The logo column is a fixed width so every logo lines up on the same edge. */
 	:global(.row-has-logo) {
-		grid-template-columns: auto minmax(0, 1fr) auto;
+		grid-template-columns: 9rem minmax(0, 1fr) auto;
 		grid-template-areas:
 			'logo main arrow'
 			'logo blurb arrow';
@@ -52,13 +53,15 @@
 	.ticket {
 		--notch: 8px;
 		position: relative;
+		box-sizing: border-box;
+		max-width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.9rem 1.2rem;
+		padding: 0.6rem 0.8rem;
 		background: linear-gradient(135deg, #fdfbf3, #efe6cf);
 		filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.3));
-		transform: rotate(-2.5deg);
+		transform: rotate(2deg);
 		transition: transform 0.15s ease;
 		/* Punch a half-circle notch out of the left and right edges. */
 		-webkit-mask:
@@ -80,7 +83,13 @@
 		pointer-events: none;
 	}
 	:global(.row:hover) .ticket {
-		transform: rotate(-2.5deg) translateY(-2px);
+		transform: rotate(4deg) translateY(-2px);
+	}
+	.logo {
+		transition: transform 0.15s ease;
+	}
+	:global(.row:hover) .logo {
+		transform: rotate(-3deg);
 	}
 </style>
 
@@ -108,21 +117,21 @@
 								<!-- No light-mode variant; frame it like a paper ticket so a
 								     dark-on-transparent logo stays legible on the dark card. -->
 								<div class="ticket">
-									<img src={logo} alt="{name} logo" class="max-h-24 w-28 object-contain" />
+									<img src={logo} alt="{name} logo" class="max-h-20 w-24 object-contain" />
 								</div>
 							{:else}
 								<!-- Default logo is light-on-transparent — shown in dark mode. -->
 								<img
 									src={logo}
 									alt="{name} logo"
-									class="max-h-32 w-32 object-contain {dark ? 'light:hidden' : ''}"
+									class="logo max-h-32 w-32 object-contain {dark ? 'light:hidden' : ''}"
 								/>
 								{#if dark}
 									<!-- Dark-on-transparent variant — swapped in for light mode. -->
 									<img
 										src={dark}
 										alt="{name} logo"
-										class="hidden max-h-32 w-32 object-contain light:block"
+										class="hidden logo max-h-32 w-32 object-contain light:block"
 									/>
 								{/if}
 							{/if}
