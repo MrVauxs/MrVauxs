@@ -92,7 +92,7 @@
 		</div>
 
 		<a class="nav-link" href="/work" data-sveltekit-preload-data="hover">
-			<span>See who I've worked with</span>
+			<span>See what I've worked on</span>
 			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
 				<path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
 			</svg>

@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
+/* This site toggles themes via data-theme on <html> (see +layout.svelte), not
+   the default .dark class, so wire a `light:` variant to match it. */
+@custom-variant light (&:where([data-theme='light'] *));
+
 /* Fonts (Newsreader serif for prose, Geist sans for UI chrome) are loaded via
    <link> in app.html so the @import ordering rule can't be violated and the
    browser can start fetching them earlier. */

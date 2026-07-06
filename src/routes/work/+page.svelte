@@ -1,27 +1,88 @@
 <script lang="ts">
 	import ThemeToggle from '$lib/ThemeToggle.svelte';
+	import loottavernLogo from '$lib/assets/loottavern-logo.png';
+	import teamplusLogo from '$lib/assets/teamplus-logo.png';
+	import triggeranimations from '$lib/assets/triggeranimations-logo.png';
+	import triggeranimationsDark from '$lib/assets/triggeranimations-logo-dark.png';
 
 	const work = [
 		{
 			name: 'Loot Tavern',
 			role: 'Vault Developer and FoundryVTT head',
-			blurb: 'Built the Loot Tavern Vault and made its FoundryVTT module pipeline.',
-			href: 'https://loottavern.com/'
+			blurb: 'Built the Loot Tavern Vault and managing their FoundryVTT module pipeline.',
+			href: 'https://loottavern.com/',
+			logo: loottavernLogo
 		},
 		{
 			name: 'Team+',
 			role: 'Module Dev and Maintainer',
 			blurb: 'Made Magic+, Summoners+, Barbarians+, and maintaining all other Team+ content modules.',
-			href: 'https://theteamplus.us/'
+			href: 'https://theteamplus.us/',
+			logo: teamplusLogo,
+			dark: 'improv'
 		},
 		{
 			name: 'Trigger Animations',
 			role: 'Creator',
 			blurb: 'My own FoundryVTT module for creating animations with node-based UI.',
-			href: 'https://wiki.mrvauxs.net/reference/trigger-animations'
+			href: 'https://wiki.mrvauxs.net/reference/trigger-animations',
+			logo: triggeranimations,
+			dark: triggeranimationsDark
 		}
-	] as const;
+	];
 </script>
+
+<style>
+	/* Wider than the default card so logos can sit beside the text. */
+	.page :global(.card) {
+		max-width: 44rem;
+	}
+
+	/* Named grid areas have no clean Tailwind equivalent, so keep them here. */
+	:global(.row-has-logo) {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		grid-template-areas:
+			'logo main arrow'
+			'logo blurb arrow';
+	}
+
+	/* A little paper "tram ticket" for logos with no light-mode variant: warm
+	   stock, punched notches on each side, a perforated frame, tilted like it
+	   was tucked into the card. Mask + notches need real CSS, not utilities. */
+	.ticket {
+		--notch: 8px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.9rem 1.2rem;
+		background: linear-gradient(135deg, #fdfbf3, #efe6cf);
+		filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.3));
+		transform: rotate(-2.5deg);
+		transition: transform 0.15s ease;
+		/* Punch a half-circle notch out of the left and right edges. */
+		-webkit-mask:
+			radial-gradient(circle at left center, #0000 var(--notch), #000 0),
+			radial-gradient(circle at right center, #0000 var(--notch), #000 0);
+		-webkit-mask-composite: source-in;
+		mask:
+			radial-gradient(circle at left center, #0000 var(--notch), #000 0),
+			radial-gradient(circle at right center, #0000 var(--notch), #000 0);
+		mask-composite: intersect;
+	}
+	/* Perforated inner frame. */
+	.ticket::before {
+		content: '';
+		position: absolute;
+		inset: 5px;
+		border: 1px dashed color-mix(in srgb, #9c8a5f 65%, transparent);
+		border-radius: 5px;
+		pointer-events: none;
+	}
+	:global(.row:hover) .ticket {
+		transform: rotate(-2.5deg) translateY(-2px);
+	}
+</style>
 
 <svelte:head>
 	<title>Work · mrvauxs.net</title>
@@ -39,8 +100,34 @@
 		<hr />
 
 		<div class="rows">
-			{#each work as { name, role, blurb, href } (name)}
-				<a class="row" {href} target="_blank" rel="noreferrer">
+			{#each work as { name, role, blurb, href, logo, dark } (name)}
+				<a class="row" class:row-has-logo={!!logo} {href} target="_blank" rel="noreferrer">
+					{#if logo}
+						<div class="flex items-center justify-center [grid-area:logo]">
+							{#if dark === 'improv'}
+								<!-- No light-mode variant; frame it like a paper ticket so a
+								     dark-on-transparent logo stays legible on the dark card. -->
+								<div class="ticket">
+									<img src={logo} alt="{name} logo" class="max-h-24 w-28 object-contain" />
+								</div>
+							{:else}
+								<!-- Default logo is light-on-transparent — shown in dark mode. -->
+								<img
+									src={logo}
+									alt="{name} logo"
+									class="max-h-32 w-32 object-contain {dark ? 'light:hidden' : ''}"
+								/>
+								{#if dark}
+									<!-- Dark-on-transparent variant — swapped in for light mode. -->
+									<img
+										src={dark}
+										alt="{name} logo"
+										class="hidden max-h-32 w-32 object-contain light:block"
+									/>
+								{/if}
+							{/if}
+						</div>
+					{/if}
 					<div class="row-main">
 						<h2>{name}</h2>
 						<span class="row-role">{role}</span>
