@@ -3,20 +3,19 @@
 		{
 			name: 'Loot Tavern',
 			role: 'Vault Dev · FoundryVTT head',
-			blurb: 'Built the Loot Tavern Vault and made its FoundryVTT module pipeline.',
+			blurb: 'Created the Loot Tavern Vault and LT\'s FoundryVTT module pipeline.',
 			href: 'https://loottavern.com/'
 		},
 		{
 			name: 'Team+',
 			role: 'Module Dev · Maintainer',
-			blurb:
-				'Made Magic+, Summoners+, Barbarians+, and maintaining all other Team+ content modules.',
+			blurb: 'Made Magic+, Summoners+, Barbarians+, and maintaining all other Team+ content modules.',
 			href: 'https://theteamplus.us/'
 		},
 		{
 			name: 'Trigger Animations',
 			role: 'Creator',
-			blurb: 'My own FoundryVTT module for creating animations with a node-based UI.',
+			blurb: 'My own FoundryVTT module for creating Sequencer animations with a node-based UI.',
 			href: 'https://wiki.mrvauxs.net/reference/trigger-animations'
 		}
 	];
